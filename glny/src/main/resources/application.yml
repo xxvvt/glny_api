@@ -1,0 +1,71 @@
+server:
+  port : 8801
+  servlet:
+    context-path: /
+file:
+  #上传路径
+  path: /home/api/file/
+  apk-path: /home/api/file/
+access:
+  base-url:
+    #访问路径
+    file: e:/file/
+#数据库配置
+spring:
+  servlet:
+    multipart:
+      max-request-size: 5GB  # 上传文件总的最大值 默认10MB
+      max-file-size: 1GB #单个文件最大值 默认10MB
+  datasource:
+    #数据库的地址以及端口号
+    url: jdbc:postgresql://10.34.175.43:5432/ny_bi
+    #账号（默认为postgres）
+    username: gpadmin
+    #密码
+    password: It2534683*
+    driverClassName: org.postgresql.Driver
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        hbm2ddl:
+          auto: update
+
+    #hikari连接池
+    hikari:
+      minimum-idle: 5
+      idle-timeout: 180000
+      maximum-pool-size: 50
+      auto-commit: true
+      pool-name: RyanHikariCP
+      max-lifetime: 180000
+      connection-timeout: 30000
+      connection-test-query: select 1
+  redis:
+    host: 127.0.0.1
+    port: 6379
+    password:
+    database: 13
+# MyBatis配置
+mybatis:
+  mapper-locations: classpath:mapper/*.xml # MyBatis映射器XML文件的位置，可以根据您的项目结构进行调整
+  type-aliases-package: com.example.model # 指定MyBatis别名包的位置，用于简化结果集映射
+  configuration:
+    map-underscore-to-camel-case: true
+# 日志输出，可选配置，方便调试
+logging:
+  level:
+    org.mybatis: TRACE # 开启MyBatis日志输出
+SAP:
+  #SAP连接配置
+  sap-connection:
+    jco-ashost: 10.197.3.3
+    jco-sysnr: 00
+    jco-client: 800
+    jco-user: FPRFC_GP
+    jco-passwd: Fpp#2022
+    jco-lang: ZH
+    jco-pool-capacity: 10
+    jco-peak-limit: 30
+    jco-ABAP: ABAP_AS_WITH_POOL
+GLNY_TOKEN: 1178E2606F7F788A085A6149C3A880B0
